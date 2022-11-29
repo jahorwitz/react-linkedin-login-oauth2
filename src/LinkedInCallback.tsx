@@ -11,7 +11,7 @@ type ParamsType = {
 export function LinkedInCallback() {
   const [errorMessage, setErrorMessage] = useState<string>('');
   useEffect(() => {
-    const params = parse(window.location.search) as ParamsType;
+    const params = parse(window.location.hash.split('/linkedin?')[1]) as ParamsType;
     if (params.state !== localStorage.getItem(LINKEDIN_OAUTH2_STATE)) {
       setErrorMessage('State does not match');
     } else if (params.error) {
